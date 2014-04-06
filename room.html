@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="../css/vendor/font-awesome.css" />
+    <link rel="stylesheet" href="css/vendor/font-awesome-ie7.css" />
+    <title>almost where</title>
+    <link rel="stylesheet" href="css/vendor/bootstrap.css" />
+    <link rel="stylesheet" href="css/overrides/bootstrap-overrides.css" />
+
+    <link rel="stylesheet" href="css/HTML5admin.css" />
+    <script src="js/vendor/jquery.min.js"></script>
+    <script src="js/device.js"></script>
+    <script src="js/room.js"></script>
+    <script src="/socket.io/socket.io.js"></script>    
+    <script>
+    var socket = socket || io.connect('http://' + document.domain);
+
+    </script>
+
+</head>
+
+<body> 
+
+    <!-- NEW CONTAINERS - For New Content -->
+    <div class="container" style="width:70%;float:left;position:relative;top:0px">
+        <p id="coords">accessing...</p>
+        <p id="other_device"></p>
+    </div>     
+    <script src="../js/vendor/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="shortcut icon" href="images/favicon.png">
+        <title>almost where</title>
+        <link rel="stylesheet" href="../css/vendor/bootstrap.css" />
+        <link rel="stylesheet" href="../css/vendor/font-awesome.css" />
+        <link rel="stylesheet" href="../css/vendor/font-awesome-ie7.css" />
+        <link rel="stylesheet" href="../css/overrides/bootstrap-overrides.css" />
+        <link rel="stylesheet" href="../css/HTML5admin.css" />
+        <script src="js/vendor/jquery.min.js"></script>         
+        <script>
+        function s4() {
+            return Math.floor((1 + Math.random()) * 0x10000)
+                 .toString(16)
+                 .substring(1);
+        };
+
+        function getGuid() {
+            return s4()+s4()+s4()+s4();
+        }
+        $(function() {
+            var guid = localStorage.getItem("deviceId");
+            if (!guid) {
+                guid = getGuid();
+                deviceId = localStorage.setItem("deviceId", guid);
+            }
+            location.href = "room?"+guid;
+        });
+        </script>
+    </head>
+    <body>
+       <div class="container h5a-container ">
+            <div class="row">
+                <div class="col-md-10">
+                    <h1>Almost where</h1>
+                    <p>
+                        Click connect, then share the link.
+                    </p>
+                    <input type="submit" style="width:200px;position:relative;left:0px" class="create-room-button h5a-btn btn  btn-lg btn-primary full" value="Connect">
+                </div>
+            </div>
+
+        </div>
+        <script src="../js/vendor/jquery.min.js"></script>
+        <script src="../js/vendor/bootstrap.min.js"></script>
+        
+    </body>
+</html>

@@ -1,0 +1,17 @@
+{
+    "name": "App",
+    "version": "0.0.1-16",
+    "description": "App",
+    "dependencies": {
+        "socket.io": "latest",
+        "express": "3.x"
+    },
+    "author": "developer",
+    "subdomain": "troygdaniel-thoughtography",
+    "scripts": {
+        "start": "node app.js"
+    },
+    "engines": {
+        "node": "0.10.x"
+    }
+}
