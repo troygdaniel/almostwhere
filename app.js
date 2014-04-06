@@ -41,7 +41,7 @@ function createSocketForRoom(roomId) {
       // subscribe to "share_note:1234"
       socket.on('share_location:' + roomId, function(data) {
         // publish message to "shared_note_changes:1234" event
-        console.log(">>> share_location_changes:" + roomId + ", data = "+ data);
+        // console.log(">>> share_location_changes:" + roomId + ", data = "+ data);
         socket.broadcast.emit('share_location_changes:' + roomId, data);
       });
   });

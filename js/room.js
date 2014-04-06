@@ -14,24 +14,23 @@ $(function() {
   var deviceOptions = {
     id: deviceId,
     roomId: roomPage.id,
-    socket: socket,
-    onUpdate: function(lat, lng) {
-      now = new Date();
-      $("#coords").html(lat+" ,"+lng);
-    }
+    socket: socket
   };
 
   device = new Almost.Device(deviceOptions);
 
+  // Receive updates from web sockets
   socket.on('share_location_changes:' + roomPage.id, function(data) {
-      console.log("received update from " + data.id);
+
       var dist = distanceFrom(device.getLat(), device.getLng(), data.lt, data.lg);
-      // $("#other_device").text(data.id);
-      if (dist < 1) {
-        $("#other_device").text(parseInt(dist*1000)+"m");
-      }
-      else
-        $("#other_device").text(parseInt(dist)+"km");
+      if (dist < 1) 
+        $("#other_device").text(parseInt(dist*1000)+"m");      
+      else 
+        $("#other_device").text(dist.toFixed(2)+" km");
+
+      if (dist > 500)
+        $("#other_device").text("Calculating...");
+
     });
 });
 
@@ -53,20 +52,12 @@ function RoomPage (options) {
       return s4()+s4()+s4()+s4();
   }
 
-/*
-http://stackoverflow.com/questions/14560999/using-the-haversine-formula-in-javascript
-*/
-
 function deg2rad(deg) {
   return deg * (Math.PI/180)
 }
 
 function distanceFrom(lat1,lon1,lat2,lon2) {
-  console.log("lat1 = " +lat1);
-  console.log("lon1 = " +lon1);
-  console.log("lat2 = " +lat2);
-  console.log("lon2 = " +lon2);
-
+  
 var R = 6371; // Radius of the earth in km
   var dLat = deg2rad(lat2-lat1);  // deg2rad below
   var dLon = deg2rad(lon2-lon1); 

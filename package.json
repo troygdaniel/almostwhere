@@ -1,13 +1,13 @@
 {
     "name": "App",
-    "version": "0.0.1-16",
+    "version": "0.0.1-24",
     "description": "App",
     "dependencies": {
         "socket.io": "latest",
         "express": "3.x"
     },
     "author": "developer",
-    "subdomain": "troygdaniel-thoughtography",
+    "subdomain": "almostwhere",
     "scripts": {
         "start": "node app.js"
     },

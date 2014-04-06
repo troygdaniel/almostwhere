@@ -2,8 +2,8 @@ var Almost = Almost || {};
 
 Almost.Device = function (options) {
   var id, roomId, socket, onUpdate
-  var previousLocation = {lat:-1, lng:-1};
-  var currentLocation = {lat:0, lng:0};
+  var previousLocation =  {lat:-1, lng:-1};
+  var currentLocation =   {lat:0, lng:0};
 
   initialize(options);
 
@@ -34,7 +34,7 @@ Almost.Device = function (options) {
     currentLocation.lng=lng;
 
     // if (previousLocation != currentLocation) {
-      onUpdate(lat,lng);
+      if (onUpdate) onUpdate(lat,lng);
     // }
     socket.emit('share_location:'+roomId, toJSON());
 
