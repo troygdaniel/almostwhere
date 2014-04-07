@@ -4,15 +4,13 @@ var roomPage, device;
 // Page init
 $(function() {  
   roomPage = new RoomPage();
-  var deviceId = localStorage.getItem("deviceId");
-  if (!deviceId) {
-    deviceId = getGuid();
-    localStorage.setItem("deviceId", deviceId);
-  }
+  var deviceId = getDeviceId()
+  var deviceName = getDeviceName();
   var now = new Date();
-
+  document.title = "almost where | " + deviceName;
   var deviceOptions = {
     id: deviceId,
+    deviceName: deviceName,
     roomId: roomPage.id,
     socket: socket
   };
@@ -23,19 +21,38 @@ $(function() {
   socket.on('share_location_changes:' + roomPage.id, function(data) {
 
       var dist = distanceFrom(device.getLat(), device.getLng(), data.lt, data.lg);
-      // var dist = distanceFrom(43.441559, -79.7486979, data.lt, data.lg);
-
+       // var dist = distanceFrom(43.441559, -79.7486979, data.lt, data.lg);
+      var deviceName = data.n;
+      document.title = "almost where | " + deviceName;
+      $("#medium_text").html("from <br/>" + deviceName);
       if (dist < 1) 
-        $("#other_device").text(parseInt(dist*1000)+"m");      
+        $("#large_text").text(parseInt(dist*1000)+"m");      
       else 
-        $("#other_device").text(dist.toFixed(2)+" km");
+        $("#large_text").text(dist.toFixed(2)+" km");
 
       if (dist > 500)
-        $("#other_device").text(":-(");
+        $("#large_text").text(":-(");
 
     });
 });
 
+function getDeviceId() {
+  var deviceId;
+  deviceId = localStorage.getItem("deviceId");
+  if (!deviceId) {
+    deviceId = getGuid();
+    localStorage.setItem("deviceId", deviceId);
+  }
+  return deviceId;
+}
+
+function getDeviceName() {
+  var deviceName = localStorage.getItem("deviceName");
+  if (deviceName === null || deviceName === "deviceName") deviceName = "";
+  deviceName = prompt("Please name this device",deviceName);
+  localStorage.setItem("deviceName", deviceName);
+  return deviceName;
+}
 
 function RoomPage (options) {
   var id = location.search.substr(1, location.search.length);

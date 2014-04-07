@@ -14,6 +14,7 @@
         <link rel="stylesheet" href="../css/HTML5admin.css" />
         <script src="js/vendor/jquery.min.js"></script>         
         <script>
+        var guid;
         function s4() {
             return Math.floor((1 + Math.random()) * 0x10000)
                  .toString(16)
@@ -24,28 +25,25 @@
             return s4()+s4()+s4()+s4();
         }
         $(function() {
-            var guid = localStorage.getItem("deviceId");
+            guid = localStorage.getItem("deviceId");
             if (!guid) {
                 guid = getGuid();
-                deviceId = localStorage.setItem("deviceId", guid);
+                localStorage.setItem("deviceId", guid);
             }
-            location.href = "room?"+guid;
+            $("#connect-btn").click(function(){
+                location.href = "room?"+guid;
+            });
         });
         </script>
     </head>
     <body>
-       <div class="container h5a-container ">
-            <div class="row">
-                <div class="col-md-10">
-                    <h1>Almost where</h1>
+        <center>
+                    <h2>Almost where</h2>
                     <p>
                         Click connect, then share the link.
                     </p>
-                    <input type="submit" style="width:200px;position:relative;left:0px" class="create-room-button h5a-btn btn  btn-lg btn-primary full" value="Connect">
-                </div>
-            </div>
-
-        </div>
+                    <input type="submit" id="connect-btn" style="width:200px;position:relative;left:0px" class="create-room-button h5a-btn btn  btn-lg btn-primary full" value="Connect">
+    </center>
         <script src="../js/vendor/jquery.min.js"></script>
         <script src="../js/vendor/bootstrap.min.js"></script>
         

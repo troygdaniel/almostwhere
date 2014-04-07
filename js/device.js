@@ -1,7 +1,7 @@
 var Almost = Almost || {};
 
 Almost.Device = function (options) {
-  var id, roomId, socket, onUpdate
+  var id, roomId, deviceName, socket, onUpdate
   var previousLocation =  {lat:-1, lng:-1};
   var currentLocation =   {lat:0, lng:0};
 
@@ -11,6 +11,7 @@ Almost.Device = function (options) {
     // initialize with opt
     if (!opt) return;
     if (opt.id)       { id = opt.id; }
+    if (opt.deviceName) { deviceName = opt.deviceName; }
     if (opt.roomId)   { roomId = opt.roomId; }
     if (opt.socket)   { socket = opt.socket; }
     if (opt.onUpdate) { onUpdate = opt.onUpdate; }
@@ -44,6 +45,7 @@ Almost.Device = function (options) {
   function toJSON() {
     return {
       id: id,
+      n: deviceName,
       lt: currentLocation.lat,
       lg: currentLocation.lng
     }
