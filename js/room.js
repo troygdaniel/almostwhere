@@ -23,13 +23,15 @@ $(function() {
   socket.on('share_location_changes:' + roomPage.id, function(data) {
 
       var dist = distanceFrom(device.getLat(), device.getLng(), data.lt, data.lg);
+      // var dist = distanceFrom(43.441559, -79.7486979, data.lt, data.lg);
+
       if (dist < 1) 
         $("#other_device").text(parseInt(dist*1000)+"m");      
       else 
         $("#other_device").text(dist.toFixed(2)+" km");
 
       if (dist > 500)
-        $("#other_device").text("Calculating...");
+        $("#other_device").text(":-(");
 
     });
 });

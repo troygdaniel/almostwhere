@@ -427,7 +427,8 @@ h6 {
 }
 h1,
 .h1 {
-  font-size: 36px;
+  /*font-size: 36px;*/
+  font-size: 86px;
 }
 h2,
 .h2 {
