@@ -5,8 +5,6 @@ $(function() {
   roomPage.listenForUpdates(device);
 });
 
-
-
 function RoomPage (options) {
   var id = location.search.substr(1, location.search.length);
 
@@ -18,8 +16,7 @@ function RoomPage (options) {
         var deviceName = data.n;
          // var dist = distanceFrom(43.441559, -79.7486979, data.lt, data.lg);
 
-        document.title = "almost where | " + deviceName;
-        
+        document.title = "almost where | " + deviceName;        
         $("#medium_text").html("from <br/>" + deviceName);
         
         if (dist < 1) 
@@ -27,8 +24,7 @@ function RoomPage (options) {
         else 
           $("#large_text").text(dist.toFixed(2)+" km");
 
-        if (dist > 500)
-          $("#large_text").text(":-(");
+        if (dist > 500) $("#large_text").text(":-(");
 
       });
   }

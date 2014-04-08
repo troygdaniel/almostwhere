@@ -34,11 +34,7 @@ Almost.Device = function (options) {
     currentLocation.lat=lat;
     currentLocation.lng=lng;
 
-    // if (previousLocation != currentLocation) {
-      if (onUpdate) onUpdate(lat,lng);
-    // }
     socket.emit('share_location:'+roomId, toJSON());
-
     previousLocation = currentLocation;
   }
 
