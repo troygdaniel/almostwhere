@@ -1,6 +1,6 @@
 {
     "name": "App",
-    "version": "0.0.1-26",
+    "version": "0.0.1-28",
     "description": "App",
     "dependencies": {
         "socket.io": "latest",
@@ -8,6 +8,9 @@
     },
     "author": "developer",
     "subdomain": "almostwhere",
+    "domains": [
+        "almostwhere.com"
+    ],
     "scripts": {
         "start": "node app.js"
     },

@@ -30,7 +30,10 @@
                 guid = getGuid();
                 localStorage.setItem("deviceId", guid);
             }
+            $("#device-name").val(Almost.Device.fetchDeviceName());
+            
             $("#connect-btn").click(function(){
+                Almost.Device.saveDeviceName($("#device-name").val());
                 location.href = "room?"+guid;
             });
         });
@@ -40,10 +43,12 @@
         <center>
                     <h2>Almost where</h2>
                     <p>
-                        Click connect, then share the link.
+                        Provide a name, and click connect
                     </p>
+                    <input type="text" id="device-name" placeholder="Your name" class="h5a-input form-control input-sm" style="width:200px">
                     <input type="submit" id="connect-btn" style="width:200px;position:relative;left:0px" class="create-room-button h5a-btn btn  btn-lg btn-primary full" value="Connect">
     </center>
+        <script src="js/device.js"></script>
         <script src="../js/vendor/jquery.min.js"></script>
         <script src="../js/vendor/bootstrap.min.js"></script>
         
