@@ -14,7 +14,7 @@
         <link rel="stylesheet" href="../css/HTML5admin.css" />
         <script src="js/vendor/jquery.min.js"></script>         
         <script>
-        var guid;
+        var guid, distanceFrom = 1.19;
         function s4() {
             return Math.floor((1 + Math.random()) * 0x10000)
                  .toString(16)
@@ -24,6 +24,16 @@
         function getGuid() {
             return s4()+s4()+s4()+s4();
         }
+        function exampleDistance() {
+            distanceFrom = (distanceFrom - 0.013);
+            if (distanceFrom < 0) distanceFrom = 1.19;
+            if (distanceFrom > 1)
+                $("#distance_from").html(distanceFrom.toFixed(2)+"<br/> KM");
+            else {                
+                $("#distance_from").html((distanceFrom * 1000).toFixed(0)+"M");
+            }
+
+        }
         $(function() {
             guid = localStorage.getItem("deviceId");
             if (!guid) {
@@ -32,6 +42,7 @@
             }
             $("#device-name").val(Almost.Device.fetchDeviceName());
             
+            setInterval(exampleDistance,1000);
             $("#connect-btn").click(function(){
                 Almost.Device.saveDeviceName($("#device-name").val());
                 location.href = "room?"+guid;
@@ -43,10 +54,31 @@
         <center>
                     <h2>Almost where</h2>
                     <p>
-                        Provide a name, and click connect
+                        Dead simple location sharing.                        
                     </p>
                     <input type="text" id="device-name" placeholder="Your name" class="h5a-input form-control input-sm" style="width:200px">
                     <input type="submit" id="connect-btn" style="width:200px;position:relative;left:0px" class="create-room-button h5a-btn btn  btn-lg btn-primary full" value="Connect">
+                    <p><br/>
+                        No apps or registration required.                        
+                    </p>
+
+                    <hr/>
+                    <h2>How it works</h2>
+                    <p><br/>                        
+                        Once you provide your name and click connect,
+                        <br/>
+                        just email or text your page to a friend.
+                        <br/><br/>
+                        Share HOW FAR you are<br/>not WHERE you are.
+
+                    </p>
+                    <hr/>
+                    <h2>Example</h2>
+                    <center><h1 id="distance_from">1.19<br/>km</h1>
+                    <br>
+                    <h2 id="some_one">from <br>Elvis</h2>
+                    </center>
+
     </center>
         <script src="js/device.js"></script>
         <script src="../js/vendor/jquery.min.js"></script>
