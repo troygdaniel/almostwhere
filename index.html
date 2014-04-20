@@ -42,7 +42,7 @@
             }
             $("#device-name").val(Almost.Device.fetchDeviceName());
             
-            setInterval(exampleDistance,1000);
+            setInterval(exampleDistance,1800);
             $("#connect-btn").click(function(){
                 Almost.Device.saveDeviceName($("#device-name").val());
                 location.href = "room?"+guid;
@@ -52,24 +52,29 @@
     </head>
     <body>
         <center>
+                    
                     <h2>Almost where</h2>
-                    <p>
+                    <P>Provide <B>your name</B> and click <B>connect</B>.
+                        <br/>
+                        Email or IM your page.</p>
+                    <input type="text" id="device-name" placeholder="Your name" class="h5a-input form-control input-sm" style="width:200px">
+                    
+                    <input type="submit" id="connect-btn" style="width:200px;position:relative;left:0px" class="create-room-button h5a-btn btn  btn-lg btn-primary full" value="Connect">
+                    <br/><br/>
+<p>
                         Dead simple location sharing.                        
                     </p>
-                    <input type="text" id="device-name" placeholder="Your name" class="h5a-input form-control input-sm" style="width:200px">
-                    <input type="submit" id="connect-btn" style="width:200px;position:relative;left:0px" class="create-room-button h5a-btn btn  btn-lg btn-primary full" value="Connect">
-                    <p><br/>
-                        No apps or registration required.                        
-                    </p>
-
+                    
+                    
                     <hr/>
                     <h2>How it works</h2>
                     <p><br/>                        
-                        Once you provide your name and click connect,
+                        After you provide your name and click connect,
                         <br/>
-                        just email or text your page to a friend.
+                        a uniquely shareable URL is created that you can<br/> share with your friends.
                         <br/><br/>
-                        Share HOW FAR you are<br/>not WHERE you are.
+                        Instead of of your location on a map,<br/>
+                        your friend will see HOW FAR you are away from them.                        
 
                     </p>
                     <hr/>
@@ -78,6 +83,7 @@
                     <br>
                     <h2 id="some_one">from <br>Elvis</h2>
                     </center>
+
 
     </center>
         <script src="js/device.js"></script>
